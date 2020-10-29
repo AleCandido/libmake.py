@@ -62,6 +62,7 @@ def setup_package():
             "Programming Language :: Python :: 3",
         ],
         install_requires=[],
+        setup_requires=["wheel"],
         python_requires=">=3.7",
     )
 
