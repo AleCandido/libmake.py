@@ -2,7 +2,7 @@ import rich
 import rich.align
 import rich.style
 
-from .rule import Rule
+from .elements.rule import Rule
 
 
 class Makefile:
