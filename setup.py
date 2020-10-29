@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 MAJOR = 0
 MINOR = 1
 MICRO = 0
-ISRELEASED = False
+ISRELEASED = True
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
 
