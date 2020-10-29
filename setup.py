@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 MAJOR = 0
 MINOR = 1
 MICRO = 4
-ISRELEASED = True
+ISRELEASED = False
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
 
@@ -49,7 +49,7 @@ def setup_package():
     setup(
         name="libmake",
         version=VERSION,
-        description="Building blocks make-like utils",
+        description="Building blocks for make-like utils",
         long_description=long_description,
         long_description_content_type="text/markdown",
         author="A.Candido",
