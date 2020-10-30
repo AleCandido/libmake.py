@@ -1,4 +1,6 @@
 from .elements.rule import Rule
+from .elements.target import Target
+from . import rule_vars
 
 
 class Makefile:
@@ -36,8 +38,6 @@ class Makefile:
         else:
             rule = self.rules[0]
 
-        self.target = rule.get_target()
-        self.prerequisites = rule.get_prerequisites()
         rule.run()
 
     def run(self, targets):
@@ -46,6 +46,5 @@ class Makefile:
         else:
             for target in targets:
                 rule = self.find_rule(target)
-                self.target = target
-                self.prerequisites = rule.get_prerequisites()
+                rule_vars.target << Target(target)
                 rule.run()

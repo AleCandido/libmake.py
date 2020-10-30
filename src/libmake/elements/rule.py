@@ -1,6 +1,7 @@
 from .target import Target
 from .prerequisite import PrerequisiteList
 from .recipe import Recipe
+from .. import rule_vars
 
 
 class Rule:
@@ -16,11 +17,7 @@ class Rule:
         return prerequisite in self.prerequisites
 
     def run(self):
-        # self.recipe(self.target, self.prerequisites)
+        if rule_vars.target() is None:
+            rule_vars.target << self.target
+        rule_vars.prereqs << self.prerequisites
         self.recipe()
-
-    def get_target(self):
-        return self.target
-
-    def get_prerequisites(self):
-        return self.prerequisites
