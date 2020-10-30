@@ -4,8 +4,11 @@ import rich
 
 import libmake
 from libmake import rule_vars as r
+from libmake import make_vars as m
 
 makefile = libmake.Makefile()
+
+m.phony << ["ciao"]
 
 
 @makefile.add_rule("??*", ["ciao", "come", "va"])
@@ -13,6 +16,7 @@ def test_rule():
     rich.get_console().print(
         inspect.cleandoc(
             """[b yellow]I'm supposed to do something[/]
+               [b red]but I'm advanced![/]
 
                [i grey54]so I will just print my [u]target[/u]:[/]"""
         ),
@@ -31,13 +35,6 @@ def test_rule():
     # rich.get_console().print(makefile.prerequisites, justify="center")
     rich.get_console().print(r.prerequisites, justify="center")
     print()
-
-
-@makefile.add_rule("a", ["ciao", "come", "va"])
-def test_rule_vars():
-    rich.print("'[yellow]r.t[/]': ", r.t)
-    rich.print("'[yellow]r.t()[/]': ", r.t())
-    rich.print("'[yellow]r.t().match(\"ciao\")[/]': ", r.t().match("ciao"))
 
 
 if __name__ == "__main__":

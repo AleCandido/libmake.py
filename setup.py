@@ -61,7 +61,7 @@ def setup_package():
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
         ],
-        install_requires=["rich"],
+        install_requires=["anytree", "rich"],
         setup_requires=["wheel"],
         entry_points={
             "console_scripts": [
