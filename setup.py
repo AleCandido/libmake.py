@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 
 # write version on the fly - inspired by numpy
 MAJOR = 0
-MINOR = 1
-MICRO = 4
+MINOR = 2
+MICRO = 0
 ISRELEASED = True
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
@@ -49,7 +49,7 @@ def setup_package():
     setup(
         name="libmake",
         version=VERSION,
-        description="Building blocks make-like utils",
+        description="Building blocks for make-like utils",
         long_description=long_description,
         long_description_content_type="text/markdown",
         author="A.Candido",
@@ -61,7 +61,7 @@ def setup_package():
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
         ],
-        install_requires=[],
+        install_requires=["rich"],
         setup_requires=["wheel"],
         python_requires=">=3.7",
     )
