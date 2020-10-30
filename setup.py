@@ -63,6 +63,11 @@ def setup_package():
         ],
         install_requires=[],
         setup_requires=["wheel"],
+        entry_points={
+            "console_scripts": [
+                "pymake=libmake.cli:pymake",
+            ],
+        },
         python_requires=">=3.7",
     )
 
