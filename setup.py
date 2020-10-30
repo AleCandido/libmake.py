@@ -3,9 +3,9 @@ from setuptools import setup, find_packages
 
 # write version on the fly - inspired by numpy
 MAJOR = 0
-MINOR = 1
-MICRO = 4
-ISRELEASED = False
+MINOR = 2
+MICRO = 0
+ISRELEASED = True
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
 
@@ -61,7 +61,7 @@ def setup_package():
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
         ],
-        install_requires=[],
+        install_requires=["rich"],
         setup_requires=["wheel"],
         entry_points={
             "console_scripts": [
