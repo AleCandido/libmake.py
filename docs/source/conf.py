@@ -56,3 +56,33 @@ html_theme = "alabaster"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+
+def run_apidoc(_):
+    from sphinx.ext.apidoc import main
+    import pathlib
+    import sys
+
+    docs_source = pathlib.Path(__file__).parent.absolute()
+    project_root = docs_source.parents[1]
+    sys.path.append(str(project_root / "src"))
+    module = project_root / "src"
+    main(
+        [
+            "--no-toc",
+            "--module-first",
+            "--separate",
+            "--ext-todo",
+            "--ext-mathjax",
+            "--ext-coverage",
+            "--templatedir",
+            str(docs_source / "_templates"),
+            "--output-dir",
+            str(docs_source / "modules"),
+            str(module),
+        ]
+    )
+
+
+def setup(app):
+    app.connect("builder-inited", run_apidoc)
