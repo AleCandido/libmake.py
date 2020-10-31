@@ -78,7 +78,7 @@ def setup_package():
         setup_requires=["wheel", "pygit2"],
         entry_points={
             "console_scripts": [
-                "pymake=libmake.cli:pymake",
+                "pymake=lmcli:pymake",
             ],
         },
         python_requires=">=3.7",
