@@ -1,16 +1,12 @@
 from .elements.rule import Rule
-from .elements.target import Target
-from . import rule_vars
+from .elements.mobject import MObject
+from .globals import rule_vars
 
 
 class Makefile:
     def __init__(self):
         self.rules = []
         self.default = None
-
-        # to be used inside rules' definition
-        self.target = None
-        self.prerequisites = None
 
     def add_rule(self, target, prerequisites, default=False):
         def get_recipe(recipe):
@@ -46,5 +42,5 @@ class Makefile:
         else:
             for target in targets:
                 rule = self.find_rule(target)
-                rule_vars.target << Target(target)
+                rule_vars.target << MObject(target)
                 rule.run()

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 # write version on the fly - inspired by numpy
 MAJOR = 0
 MINOR = 2
-MICRO = 0
+MICRO = 1
 ISRELEASED = True
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
@@ -61,8 +61,13 @@ def setup_package():
             "Programming Language :: Python",
             "Programming Language :: Python :: 3",
         ],
-        install_requires=["rich"],
+        install_requires=["anytree", "rich"],
         setup_requires=["wheel"],
+        entry_points={
+            "console_scripts": [
+                "pymake=libmake.cli:pymake",
+            ],
+        },
         python_requires=">=3.7",
     )
 

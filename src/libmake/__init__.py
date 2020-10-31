@@ -1,6 +1,7 @@
 import argparse
 
 from .makefile import Makefile
+from .globals import rule_vars, make_vars
 
 
 def run_make(makefile):
