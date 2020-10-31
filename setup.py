@@ -17,7 +17,7 @@ tags_commit_sha = [
 # write version on the fly - inspired by numpy
 MAJOR = 0
 MINOR = 2
-MICRO = 2
+MICRO = 3
 ISRELEASED = "main" in repo.head.name or repo.head.target in tags_commit_sha
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
@@ -78,7 +78,7 @@ def setup_package():
         setup_requires=["wheel", "pygit2"],
         entry_points={
             "console_scripts": [
-                "pymake=libmake.cli:pymake",
+                "pymake=lmcli:pymake",
             ],
         },
         python_requires=">=3.7",

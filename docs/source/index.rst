@@ -3,12 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to libmake.py's documentation!
-======================================
+########
+Welcome!
+########
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Content:
+
+   installation
+   examples
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Code docstrings:
+
+   modules/libmake
+   modules/lmcli
 
 
 
