@@ -44,8 +44,21 @@ class Rule:
         """
         return prerequisite in self.target.prerequisites
 
-    def run(self):
-        if rule_vars.target() is None:
-            rule_vars.target << self.target
-        rule_vars.prereqs << self.target.prerequisites
-        self.recipe()
+    def run_prerequisites(self, rules):
+        for prerequisite in self.target.prerequisites:
+            try:
+                rule = prerequisite.find_rule(rules)
+                # use prerequisite pattern, since it's the definite one
+                rule_vars.target << Target(prerequisite.pattern)
+                rule_vars.set_prerequistes(rule.target.prerequisites)
+                rule.run(rules)
+            except ValueError:
+                pass
+
+    def run(self, rules):
+        self.run_prerequisites(rules)
+        if not self.target.is_up_to_date():
+            if rule_vars.target() is None:
+                rule_vars.target << self.target
+            rule_vars.set_prerequistes(self.target.prerequisites)
+            self.recipe()

@@ -1,13 +1,19 @@
+import os
 import pathlib
 
 from ..globals.make_vars import phony
 
 
-class File(pathlib.Path):
+class File:
     def __init__(self, path):
-        if path in phony():
+        if phony() is not None and path in phony():
             raise ValueError("A phony it's forced not to be a path")
-        super().__init__(path)
+        if isinstance(path, File):
+            path = path.path
+        self.path = pathlib.Path(path)
+
+    def __getattr__(self, name):
+        return getattr(self.path, name)
 
     def is_newer(self, path):
         try:

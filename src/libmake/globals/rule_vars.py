@@ -2,7 +2,11 @@ from .alias import Alias
 
 
 class RuleAlias(Alias):
-    store = {"target": None, "first_prerequisite": None, "prerequisites": None}
+    store = {
+        "target": None,
+        "first_prerequisite": None,
+        "prerequisites": None,
+    }
 
 
 target = RuleAlias("target")
@@ -16,3 +20,10 @@ p = RuleAlias("first_prerequisite")
 prerequisites = RuleAlias("prerequisites")
 prereqs = RuleAlias("prerequisites")
 ps = RuleAlias("prerequisites")
+
+
+def set_prerequistes(prerequisites):
+    if isinstance(prerequisites, str):
+        prerequisites = [prerequisites]
+    prereqs << prerequisites
+    first_prerequisite << prerequisites[0]

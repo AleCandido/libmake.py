@@ -11,7 +11,7 @@ makefile = libmake.Makefile()
 m.phony << ["ciao"]
 
 
-@makefile.add_rule("??*", ["ciao", "come", "va"])
+@makefile.add_rule("??*")
 def test_rule():
     rich.get_console().print(
         inspect.cleandoc(

@@ -8,7 +8,7 @@ from libmake import rule_vars as r
 makefile = libmake.Makefile()
 
 
-@makefile.add_rule("??*", ["ciao", "come", "va"])
+@makefile.add_rule("a", ["ciao", "come", "va"])
 def test_rule():
     rich.get_console().print(
         inspect.cleandoc(
@@ -33,11 +33,12 @@ def test_rule():
     print()
 
 
-@makefile.add_rule("a", ["ciao", "come", "va"])
+@makefile.add_rule("??*")
 def test_rule_vars():
     rich.print("'[yellow]r.t[/]': ", r.t)
     rich.print("'[yellow]r.t()[/]': ", r.t())
     rich.print("'[yellow]r.t().match(\"ciao\")[/]': ", r.t().match("ciao"))
+    print()
 
 
 if __name__ == "__main__":
