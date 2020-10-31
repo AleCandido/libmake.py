@@ -1,11 +1,24 @@
 # -*- coding: utf-8 -*-
+import pathlib
+
+import pygit2
 from setuptools import setup, find_packages
+
+repo_path = pathlib.Path(__file__).absolute().parent
+repo = pygit2.Repository(repo_path)
+
+# determine ids of tagged commits
+tags_commit_sha = [
+    repo.resolve_refish("/".join(r.split("/")[2:]))[0].id
+    for r in repo.references
+    if "/tags/" in r
+]
 
 # write version on the fly - inspired by numpy
 MAJOR = 0
 MINOR = 2
-MICRO = 1
-ISRELEASED = True
+MICRO = 2
+ISRELEASED = "main" in repo.head.name or repo.head.target in tags_commit_sha
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
 
@@ -62,7 +75,7 @@ def setup_package():
             "Programming Language :: Python :: 3",
         ],
         install_requires=["anytree", "rich"],
-        setup_requires=["wheel"],
+        setup_requires=["wheel", "pygit2"],
         entry_points={
             "console_scripts": [
                 "pymake=libmake.cli:pymake",
