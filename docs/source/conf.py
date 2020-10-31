@@ -58,6 +58,11 @@ html_theme = "alabaster"
 html_static_path = ["_static"]
 
 
+# -- Application API  --------------------------------------------------------
+
+# Further info at: https://www.sphinx-doc.org/en/master/extdev/appapi.html
+
+
 def run_apidoc(_):
     from sphinx.ext.apidoc import main
     import pathlib
