@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   build-n-publish:
@@ -19,21 +19,19 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@master
-    - name: Setup Python 🐍
-      uses: actions/setup-python@master
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install package
-      run: |
-        pip install -e .
-    - name: Package the distribution
-      run: |
-        # package the source distribution
-        python setup.py sdist
-        # package the pure python wheel
-        python setup.py bdist_wheel
-    - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.PYPI_TOKEN }}
+      - uses: actions/checkout@master
+      - name: Setup Python 🐍
+        uses: actions/setup-python@master
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package
+        run: |
+          pip install -e .
+      - name: Package the distribution
+        run: |
+          # package the pure python wheel
+          pip wheel . -w dist --no-deps
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPI_TOKEN }}
