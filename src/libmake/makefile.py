@@ -1,5 +1,6 @@
 from .elements.rule import Rule
-from .elements.mobject import MObject
+from .elements.target import Target
+from .elements.prerequisite import Prerequisite
 from .globals import rule_vars
 
 
@@ -8,7 +9,7 @@ class Makefile:
         self.rules = []
         self.default = None
 
-    def add_rule(self, target, prerequisites, default=False):
+    def add_rule(self, target, prerequisites=None, default=False):
         def get_recipe(recipe):
             rule = Rule(target, prerequisites, recipe)
             if default:
@@ -21,26 +22,24 @@ class Makefile:
 
         return get_recipe
 
-    def find_rule(self, target):
-        for rule in self.rules:
-            if target in rule:
-                return rule
-
-        raise ValueError(f"No rule matches the target: {target}")
-
     def run_default(self):
         if self.default:
             rule = self.default
         else:
             rule = self.rules[0]
 
-        rule.run()
+        rule.run(self.rules)
 
     def run(self, targets):
         if len(targets) == 0:
             self.run_default()
         else:
             for target in targets:
-                rule = self.find_rule(target)
-                rule_vars.target << MObject(target)
-                rule.run()
+                # start dependency chain: any target is always a prerequisite
+                # before, and so also the initial ones
+                rule = Prerequisite(target).find_rule(self.rules)
+                # update vaariable to be used in recipes
+                rule_vars.target << Target(target)
+                # to run a rule should determine if any prerequisite should run
+                # before
+                rule.run(self.rules)

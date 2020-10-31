@@ -16,8 +16,8 @@ tags_commit_sha = [
 
 # write version on the fly - inspired by numpy
 MAJOR = 0
-MINOR = 2
-MICRO = 4
+MINOR = 3
+MICRO = 0
 ISRELEASED = "main" in repo.head.name or repo.head.target in tags_commit_sha
 SHORT_VERSION = "%d.%d" % (MAJOR, MINOR)
 VERSION = "%d.%d.%d" % (MAJOR, MINOR, MICRO)
