@@ -75,7 +75,7 @@ def setup_package():
             "Programming Language :: Python :: 3",
         ],
         install_requires=["anytree", "rich"],
-        setup_requires=["pygit2", "wheel"],
+        setup_requires=["wheel", "pygit2"],
         entry_points={
             "console_scripts": [
                 "pymake=libmake.cli:pymake",
