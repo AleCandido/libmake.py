@@ -1,5 +1,5 @@
 from .elements.rule import Rule
-from .elements.mobject import MObject
+from .elements.target import Target
 from .globals import rule_vars
 
 
@@ -42,5 +42,5 @@ class Makefile:
         else:
             for target in targets:
                 rule = self.find_rule(target)
-                rule_vars.target << MObject(target)
+                rule_vars.target << Target(target)
                 rule.run()

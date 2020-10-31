@@ -1,11 +1,11 @@
-from .mobject import MObject
+from .target import Target
 from .recipe import Recipe
 from ..globals import rule_vars
 
 
 class Rule:
     def __init__(self, target, prerequisites, recipe):
-        self.target = MObject(target, children=prerequisites)
+        self.target = Target(target, prerequisites)
         self.recipe = Recipe(recipe)
 
     def __contains__(self, target):

@@ -1,5 +1,8 @@
 import fnmatch
 
+from .prerequisite import PrerequisiteList
+from ..utils.file import File
+
 
 class Target:
     """Target.
@@ -15,8 +18,21 @@ class Target:
 
     """
 
-    def __init__(self, pattern):
+    def __init__(self, pattern, prerequisites=None):
         self.pattern = pattern
+
+        prerequisites = [] if prerequisites is None else prerequisites
+        self.prerequisites = PrerequisiteList(prerequisites)
+
+    def __repr__(self):
+        return self.pattern
 
     def match(self, target):
         return fnmatch.fnmatch(target, self.pattern)
+
+    def is_up_to_date(self):
+        try:
+            File(self.pattern)
+        except ValueError:
+            # if the target it's not a path it's not up-to-date by definition
+            return False
