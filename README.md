@@ -1,8 +1,10 @@
-# libmake.py
+![libmake.py](https://github.com/AleCandido/libmake.py/blob/main/docs/_assets/logo.png)
 
 A python library for implementing `makefile.py` scripts.
 
 ```python
+# makefile.py
+
 import shutil
 
 import libmake
