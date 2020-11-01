@@ -22,7 +22,7 @@ def test_rule():
     # fp = first_prerequisite
     # t = target
     shutil.copy(str(r.fp), str(r.t))
-    print("ciao come va")
+    print("Ciao, come va?")
 
 
 if __name__ == "__main__":

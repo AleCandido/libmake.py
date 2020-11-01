@@ -3,13 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-########
-Welcome!
-########
+.. image:: ../_assets/logo.png
+   :width: 400
+   :alt: logo
+
+A python library for implementing ``makefile.py`` scripts.
 
 .. toctree::
    :maxdepth: 2
    :caption: Content:
+   :hidden:
 
    installation
    examples
@@ -17,10 +20,16 @@ Welcome!
 .. toctree::
    :maxdepth: 2
    :caption: Code docstrings:
+   :hidden:
 
    modules/libmake
    modules/lmcli
 
+.. image:: _static/test.png
+   :width: 620
+   :alt: test
+
+Generated with ``makefile.py`` you can find in :doc:`examples`.
 
 
 Indices and tables
