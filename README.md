@@ -1,6 +1,10 @@
-![libmake.py](docs/_assets/logo.png)
+<p align="center">
+  <a href="https://alecandido.github.io/libmake.py/"><img alt="libmake.py" src="docs/_assets/logo.png" width=500></a>
+</p>
 
 A python library for implementing `makefile.py` scripts.
+
+Run with `pymake`!
 
 ```python
 # makefile.py
