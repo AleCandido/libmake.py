@@ -1,6 +1,33 @@
-# libmake.py
+<p align="center">
+  <a href="https://alecandido.github.io/libmake.py/"><img alt="libmake.py" src="docs/_assets/logo.png" width=500></a>
+</p>
 
 A python library for implementing `makefile.py` scripts.
+
+Run with `pymake`!
+
+```python
+# makefile.py
+
+import shutil
+
+import libmake
+from libmake import rule_vars as r
+
+makefile = libmake.Makefile()
+
+
+@makefile.add_rule("ciao.html", ["come.md", "va.scss"])
+def test_rule():
+    # fp = first_prerequisite
+    # t = target
+    shutil.copy(str(r.fp), str(r.t))
+    print("Ciao, come va?")
+
+
+if __name__ == "__main__":
+    libmake.run_make(makefile)
+```
 
 #### Non-goals
 

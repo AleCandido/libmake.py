@@ -26,4 +26,5 @@ def set_prerequistes(prerequisites):
     if isinstance(prerequisites, str):
         prerequisites = [prerequisites]
     prereqs << prerequisites
-    first_prerequisite << prerequisites[0]
+    if len(prerequisites) > 0:
+        first_prerequisite << prerequisites[0]
