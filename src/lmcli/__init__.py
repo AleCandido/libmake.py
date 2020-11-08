@@ -21,7 +21,7 @@ def pymake():
     makefile = args_ns.file.absolute()
 
     if makefile.is_file():
-        subprocess.run(["python3", str(makefile)] + args_ns.args)
+        subprocess.run([sys.executable, str(makefile)] + args_ns.args)
     else:
         here = pathlib.Path(".")
         raise ValueError(
